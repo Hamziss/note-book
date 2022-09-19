@@ -9,6 +9,7 @@ import useClickOutside from "../hooks/useClickOutside"
 import { trpc } from "../utils/trpc"
 
 import LinearProgress from "@mui/material/LinearProgress"
+import Head from "next/head"
 
 export type INote = {
 	title: string
@@ -53,6 +54,11 @@ const Notes: NextPage = () => {
 
 	return (
 		<>
+			<Head>
+				<title>Notes Book</title>
+				<meta name="description" content="Notes" />
+				<link rel="icon" href="/favicon.png" />
+			</Head>
 			{addnote.isLoading && <LinearProgress color="success" />}
 			<div className="flex sm:gap-5 sm:m-10 gap-2 flex-col m-2  items-center">
 				<TechStack />
