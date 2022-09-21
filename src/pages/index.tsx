@@ -23,7 +23,7 @@ const Notes: NextPage = () => {
 	const [showPipeline, setShowPipeline] = useState(false)
 	const [color, setColor] = useState("#ffffff")
 	//trpc query
-	const { data: Notes, refetch } = trpc.useQuery(["note.getAll"])
+	const { data: Notes, refetch, isLoading } = trpc.useQuery(["note.getAll"])
 	const addnote = trpc.useMutation("note.create")
 
 	const onChangeMethod = (color: any) => {
@@ -59,7 +59,7 @@ const Notes: NextPage = () => {
 				<meta name="description" content="Notes" />
 				<link rel="icon" href="/favicon.png" />
 			</Head>
-			{addnote.isLoading && <LinearProgress color="success" />}
+			{addnote.isLoading || isLoading ? <LinearProgress color="success" /> : ""}
 			<div className="flex sm:gap-5 sm:m-10 gap-2 flex-col m-2  items-center">
 				<TechStack />
 				<form
