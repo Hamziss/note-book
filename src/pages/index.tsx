@@ -17,11 +17,11 @@ export type INote = {
 	id: number
 }
 
-const Notes: NextPage = () => {
+const NotesPage: NextPage = () => {
 	//state
 	const [showTitleInput, setshowTitleInput] = useState(false)
 	const [showPipeline, setShowPipeline] = useState(false)
-	const [color, setColor] = useState("#ffffff")
+	const [color, setColor] = useState("#fffff0")
 	//trpc query
 	const { data: Notes, refetch, isLoading } = trpc.useQuery(["note.getAll"])
 	const addnote = trpc.useMutation("note.create")
@@ -124,4 +124,4 @@ const Notes: NextPage = () => {
 	)
 }
 
-export default Notes
+export default NotesPage
